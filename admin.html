@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#173a72">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https://ilooqickrlyskpvjnnsk.supabase.co; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'self'">
+<title>ENOVA GOT TALENT 2026 | Admin</title>
+<style>
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#173a72,#2f64b7);color:#1f2937}
+.container{width:min(1180px,calc(100% - 24px));margin:auto;padding:24px 0 48px}
+.header{text-align:center;color:#fff;margin:8px 0 28px}.header h1{font-size:clamp(2rem,7vw,3.1rem);margin:0 0 8px}.header p{margin:0;font-size:1.08rem}
+.card{background:#fff;border-radius:16px;padding:26px;box-shadow:0 14px 50px rgba(0,0,0,.22);margin-bottom:24px}
+.login-wrap{max-width:520px;margin:auto}.center{text-align:center}.muted{color:#6b7280}.hidden{display:none!important}
+.form-group{margin-bottom:18px}label{display:block;font-weight:700;margin-bottom:8px}
+input,select{width:100%;padding:13px 14px;border:1px solid #d7dde5;border-radius:8px;font:inherit;background:#fff;color:#111827}
+input:focus,select:focus{outline:0;border-color:#667eea;box-shadow:0 0 0 3px rgba(102,126,234,.14)}
+.btn{border:0;border-radius:8px;padding:13px 18px;font:inherit;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;touch-action:manipulation}
+.btn.full{width:100%;padding:15px}.btn.secondary{background:#52606d}.btn.danger{background:#c62828}.btn.success{background:#267447}.btn.small{padding:8px 11px;font-size:.86rem}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.actions .btn{flex:1}
+.alert{display:none;padding:15px 16px;border-radius:8px;margin-bottom:18px;line-height:1.45}.alert.show{display:block}
+.alert.success{background:#e7f6ec;border:1px solid #abd8b8;color:#155d2b}.alert.error{background:#fdebec;border:1px solid #efb8bc;color:#8b1f28}.alert.info{background:#eaf3ff;border:1px solid #bdd7ff;color:#184c8a}
+.setup-note{background:#f7f9fc;border-left:4px solid #667eea;padding:14px;border-radius:8px;margin-bottom:18px;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px}
+.stat{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:18px 12px;border-radius:10px;text-align:center}.stat .label{font-size:.75rem;text-transform:uppercase}.stat .number{font-size:2rem;font-weight:800;margin-top:5px}
+.toolbar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:#f7f9fc;padding:16px;border-radius:10px;margin-bottom:16px}
+.toolbar-actions{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}.admin-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}
+.table-wrap{overflow:auto;border:1px solid #e0e5eb;border-radius:10px}table{width:100%;border-collapse:collapse;min-width:980px}
+thead{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}th,td{padding:12px 13px;text-align:left;border-bottom:1px solid #e8edf2;font-size:.9rem}th{font-size:.79rem;text-transform:uppercase}
+.badge{display:inline-block;padding:5px 10px;border-radius:999px;font-size:.78rem;font-weight:750}.badge.registered{background:#e3f2fd;color:#1565c0}.badge.verified{background:#e8f5e9;color:#2e7d32}.badge.pending{background:#fff3e0;color:#a24f00}.badge.withdrawn{background:#ffebee;color:#c62828}
+.empty{padding:30px;text-align:center;color:#7b8691}.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.modal-card{width:min(560px,100%);background:#fff;border-radius:14px;padding:24px;max-height:92vh;overflow:auto}
+@media(max-width:1000px){.stats{grid-template-columns:repeat(3,1fr)}}@media(max-width:720px){.card{padding:20px}.toolbar{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.admin-top{align-items:flex-start;flex-direction:column}.actions{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="container">
+<header class="header"><h1>⚽ ENOVA GOT TALENT 2026</h1><p>Administrator Management Dashboard</p></header>
+
+<section id="authSection" class="login-wrap">
+<div class="card">
+<h2 class="center">🔐 Administrator Access</h2>
+<p class="muted center">Private tournament administration</p>
+<div id="authMessage" class="alert info"></div>
+
+<div id="loginPanel">
+<form id="loginForm">
+<div class="form-group"><label>Email</label><input id="loginEmail" type="email" autocomplete="username" required></div>
+<div class="form-group"><label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" minlength="12" required></div>
+<button id="loginBtn" class="btn full" type="submit">Sign In</button>
+</form>
+<div class="actions"><button id="showSetup" class="btn secondary" type="button">Create Admin Account</button></div>
+</div>
+
+<div id="setupPanel" class="hidden">
+<div class="setup-note"><strong>One time administrator setup</strong><br>No verification email is required. Enter the setup code provided for this tournament, then choose your administrator email and password.</div>
+<form id="setupForm">
+<div class="form-group"><label>Admin Email</label><input id="setupEmail" type="email" autocomplete="email" required></div>
+<div class="form-group"><label>Create Password</label><input id="setupPassword" type="password" autocomplete="new-password" minlength="12" required></div>
+<div class="form-group"><label>Confirm Password</label><input id="setupPassword2" type="password" autocomplete="new-password" minlength="12" required></div>
+<div class="form-group"><label>One Time Setup Code</label><input id="setupCode" type="password" autocomplete="off" required></div>
+<button id="setupBtn" class="btn full" type="submit">Create Administrator</button>
+</form>
+<div class="actions"><button id="backLogin" class="btn secondary" type="button">Back to Sign In</button></div>
+</div>
+</div>
+</section>
+
+<section id="dashboard" class="hidden">
+<div class="card">
+<div class="admin-top"><div><h2>Player Registrations</h2><p id="adminIdentity" class="muted"></p></div><div class="actions"><button id="changePasswordBtn" class="btn secondary" type="button">Change Password</button><button id="logoutBtn" class="btn danger" type="button">Sign Out</button></div></div>
+<div class="stats">
+<div class="stat"><div class="label">Total Players</div><div id="sTotal" class="number">0</div></div>
+<div class="stat"><div class="label">Goalkeepers</div><div id="sGK" class="number">0</div></div>
+<div class="stat"><div class="label">Defenders</div><div id="sDEF" class="number">0</div></div>
+<div class="stat"><div class="label">Midfielders</div><div id="sMID" class="number">0</div></div>
+<div class="stat"><div class="label">Wingers</div><div id="sWING" class="number">0</div></div>
+<div class="stat"><div class="label">Forwards</div><div id="sFWD" class="number">0</div></div>
+</div>
+<div class="toolbar">
+<div><label>Name</label><input id="searchName" placeholder="Search name"></div>
+<div><label>Employee ID</label><input id="searchEmployee" placeholder="Search employee ID"></div>
+<div><label>Position</label><select id="filterPosition"><option value="">All Positions</option><option>Goalkeeper</option><option>Centre Back</option><option>Left Back</option><option>Right Back</option><option>Defensive Midfielder</option><option>Central Midfielder</option><option>Attacking Midfielder</option><option>Left Winger</option><option>Right Winger</option><option>Striker</option><option>Forward</option><option>Flexible / Multiple Positions</option></select></div>
+<div><label>Jersey Size</label><select id="filterSize"><option value="">All Sizes</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option></select></div>
+<div><label>Status</label><select id="filterStatus"><option value="">All Statuses</option><option>Registered</option><option>Verified</option><option>Pending</option><option>Withdrawn</option></select></div>
+<div><label>Sort</label><select id="sortOrder"><option value="desc">Newest First</option><option value="asc">Oldest First</option></select></div>
+</div>
+<div class="toolbar-actions"><button id="refreshBtn" class="btn" type="button">Refresh</button><button id="resetBtn" class="btn secondary" type="button">Reset Filters</button><button id="csvBtn" class="btn success" type="button">Export CSV</button></div>
+<div id="dashMessage" class="alert error"></div>
+<div class="table-wrap"><table><thead><tr><th>Reg #</th><th>Full Name</th><th>Employee ID</th><th>Position</th><th>Jersey</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</div>
+</section>
+</main>
+
+<div id="editModal" class="modal"><div class="modal-card">
+<h2>Edit Registration</h2><form id="editForm">
+<input id="editId" type="hidden">
+<div class="form-group"><label>Full Name</label><input id="editName" required></div>
+<div class="form-group"><label>Employee ID</label><input id="editEmployee" required></div>
+<div class="form-group"><label>Position</label><select id="editPosition" required><option>Goalkeeper</option><option>Centre Back</option><option>Left Back</option><option>Right Back</option><option>Defensive Midfielder</option><option>Central Midfielder</option><option>Attacking Midfielder</option><option>Left Winger</option><option>Right Winger</option><option>Striker</option><option>Forward</option><option>Flexible / Multiple Positions</option></select></div>
+<div class="form-group"><label>Jersey Size</label><select id="editSize" required><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option></select></div>
+<div class="form-group"><label>Status</label><select id="editStatus" required><option>Registered</option><option>Verified</option><option>Pending</option><option>Withdrawn</option></select></div>
+<div class="actions"><button id="cancelEdit" class="btn secondary" type="button">Cancel</button><button class="btn" type="submit">Save Changes</button></div>
+</form></div></div>
+
+<div id="passwordModal" class="modal"><div class="modal-card">
+<h2>Change Administrator Password</h2><form id="passwordForm">
+<div class="form-group"><label>Current Password</label><input id="currentPassword" type="password" minlength="12" required></div>
+<div class="form-group"><label>New Password</label><input id="newPassword" type="password" minlength="12" required></div>
+<div class="form-group"><label>Confirm New Password</label><input id="newPassword2" type="password" minlength="12" required></div>
+<div class="actions"><button id="cancelPassword" class="btn secondary" type="button">Cancel</button><button class="btn" type="submit">Update Password</button></div>
+</form></div></div>
+
+<script>
+(function(){
+'use strict';
+const BASE='https://ilooqickrlyskpvjnnsk.supabase.co', KEY='sb_publishable_pPG0cxYO3ZtS_OcjavBraQ_bxNOi24v', STORE='enova_admin_session_v3';
+let records=[];
+const authSection=document.getElementById('authSection'),dashboard=document.getElementById('dashboard'),authMessage=document.getElementById('authMessage'),dashMessage=document.getElementById('dashMessage');
+
+function msg(el,text,type){el.textContent=text;el.className='alert '+(type||'info')+' show';}
+function clearMsg(el){el.textContent='';el.className='alert info';}
+function showAuth(){authSection.classList.remove('hidden');dashboard.classList.add('hidden');}
+function showDash(){authSection.classList.add('hidden');dashboard.classList.remove('hidden');}
+function getSession(){try{return JSON.parse(localStorage.getItem(STORE)||'null')}catch(e){return null}}
+function saveSession(data){localStorage.setItem(STORE,JSON.stringify(data));}
+function clearSession(){localStorage.removeItem(STORE);}
+function token(){const s=getSession();return s&&s.token?s.token:null;}
+
+async function rpc(name,body){
+ const res=await fetch(BASE+'/rest/v1/rpc/'+name,{
+   method:'POST',
+   headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json'},
+   body:JSON.stringify(body||{})
+ });
+ const text=await res.text(); let data=null;
+ try{data=text?JSON.parse(text):null}catch(e){data=text}
+ if(!res.ok){throw new Error((data&&data.message)||'Request failed');}
+ return data;
+}
+
+document.getElementById('showSetup').onclick=function(){clearMsg(authMessage);document.getElementById('loginPanel').classList.add('hidden');document.getElementById('setupPanel').classList.remove('hidden');};
+document.getElementById('backLogin').onclick=function(){clearMsg(authMessage);document.getElementById('setupPanel').classList.add('hidden');document.getElementById('loginPanel').classList.remove('hidden');};
+
+document.getElementById('setupForm').addEventListener('submit',async function(e){
+ e.preventDefault(); clearMsg(authMessage);
+ const email=document.getElementById('setupEmail').value.trim(),p1=document.getElementById('setupPassword').value,p2=document.getElementById('setupPassword2').value,code=document.getElementById('setupCode').value.trim(),btn=document.getElementById('setupBtn');
+ if(p1!==p2){msg(authMessage,'Passwords do not match.','error');return;}
+ btn.disabled=true;btn.textContent='CREATING...';
+ try{
+   const data=await rpc('admin_create_account',{p_email:email,p_password:p1,p_setup_code:code});
+   saveSession(data);document.getElementById('adminIdentity').textContent='Signed in as '+data.email;
+   showDash();await load();
+ }catch(err){msg(authMessage,err.message,'error');}
+ finally{btn.disabled=false;btn.textContent='Create Administrator';}
+});
+
+document.getElementById('loginForm').addEventListener('submit',async function(e){
+ e.preventDefault();clearMsg(authMessage);
+ const btn=document.getElementById('loginBtn');btn.disabled=true;btn.textContent='SIGNING IN...';
+ try{
+   const data=await rpc('admin_login',{p_email:document.getElementById('loginEmail').value.trim(),p_password:document.getElementById('loginPassword').value});
+   saveSession(data);document.getElementById('adminIdentity').textContent='Signed in as '+data.email;showDash();await load();
+ }catch(err){msg(authMessage,err.message,'error');}
+ finally{btn.disabled=false;btn.textContent='Sign In';}
+});
+
+async function logout(){
+ const t=token();if(t){try{await rpc('admin_logout',{p_token:t})}catch(e){}}
+ clearSession();records=[];showAuth();
+}
+document.getElementById('logoutBtn').onclick=logout;
+
+async function load(){
+ clearMsg(dashMessage);const t=token();if(!t){showAuth();return;}
+ try{records=await rpc('admin_list_registrations',{p_token:t})||[];render();}
+ catch(err){if(/session/i.test(err.message)){clearSession();showAuth();msg(authMessage,'Your administrator session expired. Please sign in again.','info');}else msg(dashMessage,err.message,'error');}
+}
+
+function filtered(){
+ let d=records.slice(),n=document.getElementById('searchName').value.toLowerCase(),e=document.getElementById('searchEmployee').value.toUpperCase(),p=document.getElementById('filterPosition').value,s=document.getElementById('filterSize').value,st=document.getElementById('filterStatus').value,o=document.getElementById('sortOrder').value;
+ d=d.filter(r=>(!n||String(r.full_name||'').toLowerCase().includes(n))&&(!e||String(r.employee_id||'').toUpperCase().includes(e))&&(!p||r.position===p)&&(!s||r.jersey_size===s)&&(!st||r.status===st));
+ d.sort((a,b)=>o==='asc'?new Date(a.created_at)-new Date(b.created_at):new Date(b.created_at)-new Date(a.created_at));return d;
+}
+function stats(){
+ document.getElementById('sTotal').textContent=records.length;
+ document.getElementById('sGK').textContent=records.filter(r=>r.position==='Goalkeeper').length;
+ document.getElementById('sDEF').textContent=records.filter(r=>['Centre Back','Left Back','Right Back'].includes(r.position)).length;
+ document.getElementById('sMID').textContent=records.filter(r=>['Defensive Midfielder','Central Midfielder','Attacking Midfielder'].includes(r.position)).length;
+ document.getElementById('sWING').textContent=records.filter(r=>['Left Winger','Right Winger'].includes(r.position)).length;
+ document.getElementById('sFWD').textContent=records.filter(r=>['Striker','Forward'].includes(r.position)).length;
+}
+function cell(tr,v){const td=document.createElement('td');td.textContent=v==null?'':String(v);tr.appendChild(td);return td;}
+function render(){
+ stats();const tb=document.getElementById('tbody');tb.replaceChildren();const d=filtered();
+ if(!d.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=8;td.className='empty';td.textContent='No registrations found.';tr.appendChild(td);tb.appendChild(tr);return;}
+ d.forEach(r=>{const tr=document.createElement('tr');cell(tr,r.registration_number);cell(tr,r.full_name);cell(tr,r.employee_id);cell(tr,r.position);cell(tr,r.jersey_size);cell(tr,new Date(r.created_at).toLocaleString());
+ const st=document.createElement('td'),badge=document.createElement('span');badge.className='badge '+String(r.status||'').toLowerCase();badge.textContent=r.status||'';st.appendChild(badge);tr.appendChild(st);
+ const act=document.createElement('td'),eb=document.createElement('button'),db=document.createElement('button');eb.className='btn small';eb.textContent='Edit';eb.onclick=()=>openEdit(r);db.className='btn danger small';db.textContent='Delete';db.onclick=()=>del(r);act.append(eb,document.createTextNode(' '),db);tr.appendChild(act);tb.appendChild(tr);});
+}
+['searchName','searchEmployee'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+['filterPosition','filterSize','filterStatus','sortOrder'].forEach(id=>document.getElementById(id).addEventListener('change',render));
+document.getElementById('refreshBtn').onclick=load;
+document.getElementById('resetBtn').onclick=function(){['searchName','searchEmployee','filterPosition','filterSize','filterStatus'].forEach(id=>document.getElementById(id).value='');document.getElementById('sortOrder').value='desc';render();};
+
+function openEdit(r){document.getElementById('editId').value=r.id;document.getElementById('editName').value=r.full_name;document.getElementById('editEmployee').value=r.employee_id;document.getElementById('editPosition').value=r.position;document.getElementById('editSize').value=r.jersey_size;document.getElementById('editStatus').value=r.status;document.getElementById('editModal').classList.add('show');}
+document.getElementById('cancelEdit').onclick=()=>document.getElementById('editModal').classList.remove('show');
+document.getElementById('editForm').addEventListener('submit',async function(e){e.preventDefault();try{await rpc('admin_update_registration',{p_token:token(),p_id:document.getElementById('editId').value,p_full_name:document.getElementById('editName').value.trim(),p_employee_id:document.getElementById('editEmployee').value.trim(),p_position:document.getElementById('editPosition').value,p_jersey_size:document.getElementById('editSize').value,p_status:document.getElementById('editStatus').value});document.getElementById('editModal').classList.remove('show');await load();}catch(err){msg(dashMessage,err.message,'error');}});
+async function del(r){if(!confirm('Delete '+r.full_name+'?'))return;try{await rpc('admin_delete_registration',{p_token:token(),p_id:r.id});await load();}catch(err){msg(dashMessage,err.message,'error');}}
+
+document.getElementById('csvBtn').onclick=function(){const rows=filtered(),h=['Registration #','Full Name','Employee ID','Position','Jersey Size','Date','Status'],esc=v=>'"'+String(v??'').replace(/"/g,'""')+'"';let csv=h.map(esc).join(',')+'\n';rows.forEach(r=>csv+=[r.registration_number,r.full_name,r.employee_id,r.position,r.jersey_size,new Date(r.created_at).toLocaleString(),r.status].map(esc).join(',')+'\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='ENOVA_GOT_TALENT_2026_Registrations.csv';a.click();};
+
+document.getElementById('changePasswordBtn').onclick=()=>document.getElementById('passwordModal').classList.add('show');
+document.getElementById('cancelPassword').onclick=()=>document.getElementById('passwordModal').classList.remove('show');
+document.getElementById('passwordForm').addEventListener('submit',async function(e){e.preventDefault();const a=document.getElementById('newPassword').value,b=document.getElementById('newPassword2').value;if(a!==b){msg(dashMessage,'New passwords do not match.','error');return;}try{await rpc('admin_change_password',{p_token:token(),p_current_password:document.getElementById('currentPassword').value,p_new_password:a});document.getElementById('passwordModal').classList.remove('show');document.getElementById('passwordForm').reset();msg(dashMessage,'Password updated successfully.','success');}catch(err){msg(dashMessage,err.message,'error');}});
+
+const s=getSession();if(s&&s.token&&s.expires_at&&new Date(s.expires_at)>new Date()){document.getElementById('adminIdentity').textContent='Signed in as '+(s.email||'administrator');showDash();load();}else{clearSession();showAuth();}
+})();
+</script>
+</body></html>
