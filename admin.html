@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#17417f">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https://ilooqickrlyskpvjnnsk.supabase.co; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'self'">
+<title>ENOVA GOT TALENT 2026 | Admin</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg1:#17417f;--bg2:#2c67bd;--accent:#667eea;--accent2:#764ba2;--text:#1f2937;--muted:#6b7280}
+body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text)}
+.container{width:min(1180px,calc(100% - 24px));margin:auto;padding:24px 0 48px}
+.header{text-align:center;color:#fff;margin:8px 0 28px}
+.header h1{font-size:clamp(2rem,7vw,3.2rem);margin:0 0 8px}
+.header p{margin:0;font-size:1.08rem}
+.card{background:#fff;border-radius:16px;padding:26px;box-shadow:0 14px 50px rgba(0,0,0,.22);margin-bottom:24px}
+.welcome{background:#f7f9fc;border-left:4px solid var(--accent);padding:16px;border-radius:8px;line-height:1.6;color:#4b5563;margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{margin-bottom:18px}
+label{display:block;font-weight:700;margin-bottom:8px}
+input,select{width:100%;padding:13px 14px;border:1px solid #d7dde5;border-radius:8px;font:inherit;background:#fff;color:#111827}
+input:focus,select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(102,126,234,.14)}
+.required{color:#c62828}
+.checkbox{display:flex;gap:12px;align-items:flex-start;background:#f7f9fc;padding:15px;border-radius:8px;margin:6px 0 22px}
+.checkbox input{width:20px;height:20px;margin-top:1px}
+.checkbox label{margin:0;font-weight:500;line-height:1.45}
+.btn{border:0;border-radius:8px;padding:13px 18px;font:inherit;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn.full{width:100%;padding:15px}
+.btn.secondary{background:#52606d}
+.btn.danger{background:#c62828}
+.btn.success{background:#267447}
+.btn.small{padding:8px 11px;font-size:.86rem}
+.alert{display:none;padding:15px 16px;border-radius:8px;margin-bottom:18px;line-height:1.45}
+.alert.show{display:block}
+.alert.success{background:#e7f6ec;border:1px solid #abd8b8;color:#155d2b}
+.alert.error{background:#fdebec;border:1px solid #efb8bc;color:#8b1f28}
+.alert.info{background:#eaf3ff;border:1px solid #bdd7ff;color:#184c8a}
+.muted{color:var(--muted)}
+.center{text-align:center}
+.hidden{display:none!important}
+.login-wrap{max-width:500px;margin:auto}
+.login-actions{display:flex;gap:10px;margin-top:16px}
+.login-actions .btn{flex:1}
+details.signup-box{margin-top:18px;border-top:1px solid #e5e7eb;padding-top:14px}
+details.signup-box summary{cursor:pointer;font-weight:800;color:#374151;padding:10px 0}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px}
+.stat{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:18px 12px;border-radius:10px;text-align:center}
+.stat .label{font-size:.76rem;text-transform:uppercase}
+.stat .number{font-size:2rem;font-weight:800;margin-top:6px}
+.toolbar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:#f7f9fc;padding:16px;border-radius:10px;margin-bottom:16px}
+.toolbar-actions{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.table-wrap{overflow:auto;border:1px solid #e0e5eb;border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:980px}
+thead{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+th,td{padding:12px 13px;text-align:left;border-bottom:1px solid #e8edf2;font-size:.9rem}
+th{font-size:.79rem;text-transform:uppercase}
+.badge{display:inline-block;padding:5px 10px;border-radius:999px;font-size:.78rem;font-weight:750}
+.badge.registered{background:#e3f2fd;color:#1565c0}.badge.verified{background:#e8f5e9;color:#2e7d32}
+.badge.pending{background:#fff3e0;color:#a24f00}.badge.withdrawn{background:#ffebee;color:#c62828}
+.empty{padding:30px;text-align:center;color:#7b8691}
+.admin-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}
+.footer-note{text-align:center;color:rgba(255,255,255,.9);font-size:.86rem}
+@media(max-width:1000px){.stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.card{padding:20px}.form-row,.toolbar{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.login-actions{flex-direction:column}.admin-top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="container">
+<header class="header"><h1>⚽ ENOVA GOT TALENT 2026</h1><p>Administrator Management Dashboard</p></header>
+
+<section id="authSection" class="login-wrap">
+<div class="card">
+<h2 class="center">🔐 Administrator Access</h2>
+<p class="muted center">Sign in with your administrator email and password.</p>
+<div id="authMessage" class="alert info"></div>
+
+<form id="loginForm">
+<div class="form-group"><label for="loginEmail">Email</label><input id="loginEmail" type="email" required autocomplete="username"></div>
+<div class="form-group"><label for="loginPassword">Password</label><input id="loginPassword" type="password" minlength="10" required autocomplete="current-password"></div>
+<button class="btn full" type="submit">Sign In</button>
+</form>
+
+<details class="signup-box">
+<summary>Create Admin Account</summary>
+<p class="muted">Use this once to create your administrator login.</p>
+<form id="signupForm">
+<div class="form-group"><label for="signupEmail">Email</label><input id="signupEmail" type="email" required autocomplete="email"></div>
+<div class="form-group"><label for="signupPassword">Create Password</label><input id="signupPassword" type="password" minlength="10" required autocomplete="new-password"></div>
+<div class="form-group"><label for="signupPassword2">Confirm Password</label><input id="signupPassword2" type="password" minlength="10" required autocomplete="new-password"></div>
+<button id="signupBtn" class="btn full secondary" type="submit">Create Account</button>
+</form>
+</details>
+</div>
+</section>
+
+<section id="pendingSection" class="login-wrap hidden">
+<div class="card center">
+<h2>Account authenticated</h2>
+<p id="pendingText" class="muted"></p>
+<div class="welcome"><strong>Administrator access is waiting for activation.</strong><br>Return to ChatGPT and say <b>Admin account created</b>.</div>
+<div class="login-actions"><button id="refreshAccess" class="btn" type="button">Refresh Access</button><button id="pendingLogout" class="btn secondary" type="button">Sign Out</button></div>
+</div>
+</section>
+
+<section id="dashboard" class="hidden">
+<div class="card">
+<div class="admin-top"><div><h2>Player Registrations</h2><p id="adminIdentity" class="muted"></p></div><button id="logoutBtn" class="btn danger">Sign Out</button></div>
+<div class="stats">
+<div class="stat"><div class="label">Total Players</div><div id="sTotal" class="number">0</div></div>
+<div class="stat"><div class="label">Goalkeepers</div><div id="sGK" class="number">0</div></div>
+<div class="stat"><div class="label">Defenders</div><div id="sDEF" class="number">0</div></div>
+<div class="stat"><div class="label">Midfielders</div><div id="sMID" class="number">0</div></div>
+<div class="stat"><div class="label">Wingers</div><div id="sWING" class="number">0</div></div>
+<div class="stat"><div class="label">Forwards</div><div id="sFWD" class="number">0</div></div>
+</div>
+
+<div class="toolbar">
+<div><label for="searchName">Search Name</label><input id="searchName"></div>
+<div><label for="searchEmployee">Employee ID</label><input id="searchEmployee"></div>
+<div><label for="filterPosition">Position</label><select id="filterPosition"><option value="">All Positions</option><option>Goalkeeper</option><option>Centre Back</option><option>Left Back</option><option>Right Back</option><option>Defensive Midfielder</option><option>Central Midfielder</option><option>Attacking Midfielder</option><option>Left Winger</option><option>Right Winger</option><option>Striker</option><option>Forward</option><option>Flexible / Multiple Positions</option></select></div>
+<div><label for="filterSize">Jersey Size</label><select id="filterSize"><option value="">All Sizes</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option></select></div>
+<div><label for="filterStatus">Status</label><select id="filterStatus"><option value="">All Statuses</option><option>Registered</option><option>Verified</option><option>Pending</option><option>Withdrawn</option></select></div>
+<div><label for="sortOrder">Sort</label><select id="sortOrder"><option value="desc">Newest First</option><option value="asc">Oldest First</option></select></div>
+</div>
+
+<div class="toolbar-actions"><button id="refreshBtn" class="btn">Refresh</button><button id="resetBtn" class="btn secondary">Reset Filters</button><button id="csvBtn" class="btn success">Export CSV</button></div>
+<div id="dashMessage" class="alert error"></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Reg #</th><th>Full Name</th><th>Employee ID</th><th>Position</th><th>Jersey</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+
+<script>
+const BASE='https://ilooqickrlyskpvjnnsk.supabase.co';
+const KEY='sb_publishable_pPG0cxYO3ZtS_OcjavBraQ_bxNOi24v';
+const STORE='enova_admin_session_v2';
+let records=[];
+
+const authSection=document.getElementById('authSection');
+const pendingSection=document.getElementById('pendingSection');
+const dashboard=document.getElementById('dashboard');
+const authMessage=document.getElementById('authMessage');
+const dashMessage=document.getElementById('dashMessage');
+
+function show(section){
+  authSection.classList.toggle('hidden',section!=='auth');
+  pendingSection.classList.toggle('hidden',section!=='pending');
+  dashboard.classList.toggle('hidden',section!=='dash');
+}
+
+function message(el,text,type='info'){
+  el.textContent=text;
+  el.className='alert '+type+' show';
+}
+
+function clearMessage(el){
+  el.className='alert info';
+  el.textContent='';
+}
+
+function getSession(){
+  try{return JSON.parse(localStorage.getItem(STORE)||'null');}catch(_e){return null;}
+}
+
+function saveSession(data){
+  const expiresAt=Date.now()+((data.expires_in||3600)*1000);
+  localStorage.setItem(STORE,JSON.stringify({
+    access_token:data.access_token,
+    refresh_token:data.refresh_token,
+    expires_at:expiresAt,
+    user:data.user
+  }));
+}
+
+function clearSession(){
+  localStorage.removeItem(STORE);
+}
+
+async function refreshSession(){
+  const s=getSession();
+  if(!s||!s.refresh_token) return null;
+  if(s.expires_at && s.expires_at>Date.now()+60000) return s;
+
+  const res=await fetch(BASE+'/auth/v1/token?grant_type=refresh_token',{
+    method:'POST',
+    headers:{'apikey':KEY,'Content-Type':'application/json'},
+    body:JSON.stringify({refresh_token:s.refresh_token})
+  });
+
+  if(!res.ok){clearSession();return null;}
+  const data=await res.json();
+  saveSession(data);
+  return getSession();
+}
+
+async function authFetch(path,options={}){
+  let s=await refreshSession();
+  if(!s) throw new Error('SESSION_REQUIRED');
+  const headers=Object.assign({
+    'apikey':KEY,
+    'Authorization':'Bearer '+s.access_token
+  },options.headers||{});
+  return fetch(BASE+path,Object.assign({},options,{headers}));
+}
+
+document.getElementById('signupForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  clearMessage(authMessage);
+
+  const email=document.getElementById('signupEmail').value.trim();
+  const p1=document.getElementById('signupPassword').value;
+  const p2=document.getElementById('signupPassword2').value;
+  const btn=document.getElementById('signupBtn');
+
+  if(p1!==p2){
+    message(authMessage,'Passwords do not match.','error');
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent='CREATING ACCOUNT...';
+
+  try{
+    const res=await fetch(BASE+'/auth/v1/signup',{
+      method:'POST',
+      headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,password:p1})
+    });
+
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(data.msg||data.message||data.error_description||'Could not create account.');
+
+    if(data.access_token){
+      saveSession(data);
+      await checkAccess();
+    }else{
+      message(authMessage,'Account created. Check your email for a confirmation message. After confirming, return here and sign in.','success');
+      document.querySelector('.signup-box').open=false;
+    }
+  }catch(err){
+    message(authMessage,err.message||'Could not create account.','error');
+  }finally{
+    btn.disabled=false;
+    btn.textContent='Create Account';
+  }
+});
+
+document.getElementById('loginForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  clearMessage(authMessage);
+  try{
+    const res=await fetch(BASE+'/auth/v1/token?grant_type=password',{
+      method:'POST',
+      headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email:document.getElementById('loginEmail').value.trim(),
+        password:document.getElementById('loginPassword').value
+      })
+    });
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(data.msg||data.message||data.error_description||'Sign in failed.');
+    saveSession(data);
+    await checkAccess();
+  }catch(err){
+    message(authMessage,err.message||'Sign in failed.','error');
+  }
+});
+
+async function checkAccess(){
+  const s=await refreshSession();
+  if(!s){show('auth');return;}
+  try{
+    const userId=s.user && s.user.id;
+    if(!userId) throw new Error('NO_USER');
+    const res=await authFetch('/rest/v1/admin_users?select=user_id&user_id=eq.'+encodeURIComponent(userId));
+    const data=await res.json().catch(()=>[]);
+    if(!res.ok||!Array.isArray(data)||data.length===0){
+      show('pending');
+      document.getElementById('pendingText').textContent='Signed in as '+((s.user&&s.user.email)||'your account')+', but administrator permission has not yet been activated.';
+      return;
+    }
+    show('dash');
+    document.getElementById('adminIdentity').textContent='Signed in as '+((s.user&&s.user.email)||'administrator');
+    await load();
+  }catch(_e){
+    show('pending');
+  }
+}
+
+async function logout(){
+  try{
+    const s=getSession();
+    if(s&&s.access_token){
+      await fetch(BASE+'/auth/v1/logout',{
+        method:'POST',
+        headers:{'apikey':KEY,'Authorization':'Bearer '+s.access_token}
+      });
+    }
+  }catch(_e){}
+  clearSession();
+  records=[];
+  show('auth');
+}
+
+document.getElementById('logoutBtn').onclick=logout;
+document.getElementById('pendingLogout').onclick=logout;
+document.getElementById('refreshAccess').onclick=checkAccess;
+
+async function load(){
+  clearMessage(dashMessage);
+  try{
+    const res=await authFetch('/rest/v1/registrations?select=*&order=created_at.desc');
+    const data=await res.json().catch(()=>[]);
+    if(!res.ok) throw new Error('Could not load registrations.');
+    records=Array.isArray(data)?data:[];
+    render();
+  }catch(err){
+    message(dashMessage,err.message||'Could not load registrations.','error');
+  }
+}
+
+function filtered(){
+  const n=document.getElementById('searchName').value.toLowerCase();
+  const e=document.getElementById('searchEmployee').value.toUpperCase();
+  const p=document.getElementById('filterPosition').value;
+  const s=document.getElementById('filterSize').value;
+  const st=document.getElementById('filterStatus').value;
+  const ord=document.getElementById('sortOrder').value;
+
+  const d=records.filter(r=>
+    (!n||String(r.full_name||'').toLowerCase().includes(n)) &&
+    (!e||String(r.employee_id||'').toUpperCase().includes(e)) &&
+    (!p||r.position===p) &&
+    (!s||r.jersey_size===s) &&
+    (!st||r.status===st)
+  );
+
+  d.sort((a,b)=>ord==='asc'?new Date(a.created_at)-new Date(b.created_at):new Date(b.created_at)-new Date(a.created_at));
+  return d;
+}
+
+function stats(){
+  document.getElementById('sTotal').textContent=records.length;
+  document.getElementById('sGK').textContent=records.filter(r=>r.position==='Goalkeeper').length;
+  document.getElementById('sDEF').textContent=records.filter(r=>['Centre Back','Left Back','Right Back'].includes(r.position)).length;
+  document.getElementById('sMID').textContent=records.filter(r=>['Defensive Midfielder','Central Midfielder','Attacking Midfielder'].includes(r.position)).length;
+  document.getElementById('sWING').textContent=records.filter(r=>['Left Winger','Right Winger'].includes(r.position)).length;
+  document.getElementById('sFWD').textContent=records.filter(r=>['Striker','Forward'].includes(r.position)).length;
+}
+
+function td(tr,value){
+  const el=document.createElement('td');
+  el.textContent=value==null?'':String(value);
+  tr.appendChild(el);
+  return el;
+}
+
+function render(){
+  stats();
+  const body=document.getElementById('tbody');
+  body.replaceChildren();
+  const d=filtered();
+
+  if(!d.length){
+    const tr=document.createElement('tr');
+    const cell=document.createElement('td');
+    cell.colSpan=8;
+    cell.className='empty';
+    cell.textContent='No registrations found.';
+    tr.appendChild(cell);
+    body.appendChild(tr);
+    return;
+  }
+
+  d.forEach(r=>{
+    const tr=document.createElement('tr');
+    td(tr,r.registration_number);
+    td(tr,r.full_name);
+    td(tr,r.employee_id);
+    td(tr,r.position);
+    td(tr,r.jersey_size);
+    td(tr,new Date(r.created_at).toLocaleString());
+
+    const statusTd=document.createElement('td');
+    const badge=document.createElement('span');
+    badge.className='badge '+String(r.status||'registered').toLowerCase();
+    badge.textContent=r.status||'Registered';
+    statusTd.appendChild(badge);
+    tr.appendChild(statusTd);
+
+    const actions=document.createElement('td');
+    const verify=document.createElement('button');
+    verify.className='btn success small';
+    verify.textContent='Verify';
+    verify.onclick=()=>updateStatus(r.id,'Verified');
+
+    const remove=document.createElement('button');
+    remove.className='btn danger small';
+    remove.textContent='Delete';
+    remove.style.marginLeft='6px';
+    remove.onclick=()=>deleteRegistration(r);
+
+    actions.appendChild(verify);
+    actions.appendChild(remove);
+    tr.appendChild(actions);
+    body.appendChild(tr);
+  });
+}
+
+async function updateStatus(id,status){
+  try{
+    const res=await authFetch('/rest/v1/registrations?id=eq.'+encodeURIComponent(id),{
+      method:'PATCH',
+      headers:{'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({status:status,updated_at:new Date().toISOString()})
+    });
+    if(!res.ok) throw new Error('Could not update registration.');
+    await load();
+  }catch(err){message(dashMessage,err.message,'error');}
+}
+
+async function deleteRegistration(r){
+  if(!confirm('Delete registration for '+r.full_name+'?')) return;
+  try{
+    const res=await authFetch('/rest/v1/registrations?id=eq.'+encodeURIComponent(r.id),{method:'DELETE'});
+    if(!res.ok) throw new Error('Could not delete registration.');
+    await load();
+  }catch(err){message(dashMessage,err.message,'error');}
+}
+
+['searchName','searchEmployee'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+['filterPosition','filterSize','filterStatus','sortOrder'].forEach(id=>document.getElementById(id).addEventListener('change',render));
+document.getElementById('refreshBtn').onclick=load;
+document.getElementById('resetBtn').onclick=function(){
+  ['searchName','searchEmployee','filterPosition','filterSize','filterStatus'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('sortOrder').value='desc';
+  render();
+};
+
+document.getElementById('csvBtn').onclick=function(){
+  const rows=filtered();
+  const headers=['Registration #','Full Name','Employee ID','Position','Jersey Size','Date','Status'];
+  const esc=v=>'"'+String(v??'').replaceAll('"','""')+'"';
+  let csv=headers.map(esc).join(',')+'\n';
+  rows.forEach(r=>{
+    csv+=[r.registration_number,r.full_name,r.employee_id,r.position,r.jersey_size,new Date(r.created_at).toLocaleString(),r.status].map(esc).join(',')+'\n';
+  });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='ENOVA_GOT_TALENT_2026_Registrations.csv';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+
+checkAccess();
+</script>
+</body>
+</html>
