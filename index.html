@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; connect-src https://ilooqickrlyskpvjnnsk.supabase.co; img-src 'self' data:; base-uri 'none'; form-action 'self'; object-src 'none'">
+<title>ENOVA GOT TALENT 2026 | Registration</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg1:#173a72;--bg2:#2f64b7;--accent:#667eea;--accent2:#764ba2;--text:#1f2937;--muted:#6b7280}
+body{margin:0;min-height:100vh;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text)}
+.container{width:min(1180px,calc(100% - 24px));margin:auto;padding:24px 0 48px}
+.header{text-align:center;color:#fff;margin:8px 0 28px}
+.header h1{font-size:clamp(2rem,7vw,3.1rem);margin:0 0 8px;text-shadow:2px 2px 4px rgba(0,0,0,.25)}
+.header p{margin:0;font-size:1.08rem;opacity:.95}
+.card{background:#fff;border-radius:16px;padding:26px;box-shadow:0 14px 50px rgba(0,0,0,.22);margin-bottom:24px}
+.welcome{background:#f7f9fc;border-left:4px solid var(--accent);padding:16px;border-radius:8px;line-height:1.6;color:#4b5563;margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{margin-bottom:18px}
+label{display:block;font-weight:650;margin-bottom:8px}
+input,select{width:100%;padding:13px 14px;border:1px solid #d7dde5;border-radius:8px;font:inherit;background:#fff;color:#111827}
+input:focus,select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(102,126,234,.14)}
+.required{color:#c62828}
+.checkbox{display:flex;gap:12px;align-items:flex-start;background:#f7f9fc;padding:15px;border-radius:8px;margin:6px 0 22px}
+.checkbox input{width:20px;height:20px;margin-top:1px}
+.checkbox label{margin:0;font-weight:500;line-height:1.45}
+.btn{border:0;border-radius:8px;padding:13px 18px;font:inherit;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn.full{width:100%;padding:15px}
+.btn.secondary{background:#52606d}
+.btn.danger{background:#c62828}
+.btn.success{background:#267447}
+.btn.small{padding:8px 11px;font-size:.86rem}
+.alert{display:none;padding:15px 16px;border-radius:8px;margin-bottom:18px;line-height:1.45}
+.alert.show{display:block}
+.alert.success{background:#e7f6ec;border:1px solid #abd8b8;color:#155d2b}
+.alert.error{background:#fdebec;border:1px solid #efb8bc;color:#8b1f28}
+.alert.info{background:#eaf3ff;border:1px solid #bdd7ff;color:#184c8a}
+.muted{color:var(--muted)}
+.center{text-align:center}
+.hidden{display:none!important}
+.login-wrap{max-width:470px;margin:auto}
+.login-actions{display:flex;gap:10px;margin-top:16px}
+.login-actions .btn{flex:1}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px}
+.stat{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:18px 12px;border-radius:10px;text-align:center}
+.stat .label{font-size:.76rem;text-transform:uppercase;opacity:.9}
+.stat .number{font-size:2rem;font-weight:800;margin-top:6px}
+.toolbar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:#f7f9fc;padding:16px;border-radius:10px;margin-bottom:16px}
+.toolbar-actions{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.table-wrap{overflow:auto;border:1px solid #e0e5eb;border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:980px}
+thead{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+th,td{padding:12px 13px;text-align:left;border-bottom:1px solid #e8edf2;font-size:.9rem}
+th{font-size:.79rem;text-transform:uppercase}
+.badge{display:inline-block;padding:5px 10px;border-radius:999px;font-size:.78rem;font-weight:750}
+.badge.registered{background:#e3f2fd;color:#1565c0}.badge.verified{background:#e8f5e9;color:#2e7d32}
+.badge.pending{background:#fff3e0;color:#a24f00}.badge.withdrawn{background:#ffebee;color:#c62828}
+.row-actions{display:flex;gap:6px}
+.empty{padding:30px;text-align:center;color:#7b8691}
+.admin-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}
+.modal.show{display:flex}
+.modal-card{width:min(560px,100%);background:#fff;border-radius:14px;padding:24px;max-height:92vh;overflow:auto}
+.modal-actions{display:flex;gap:10px;margin-top:16px}
+.modal-actions .btn{flex:1}
+.footer-note{text-align:center;color:rgba(255,255,255,.85);font-size:.86rem}
+@media(max-width:1000px){.stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.card{padding:20px}.form-row,.toolbar{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.login-actions,.modal-actions{flex-direction:column}.admin-top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="container">
+<header class="header"><h1>⚽ ENOVA GOT TALENT 2026</h1><p>Football Tournament Player Registration</p></header>
+<section class="card">
+<div id="success" class="alert success"><strong>Registration successful.</strong><br>Your player registration has been securely recorded.</div>
+<div id="error" class="alert error"></div>
+<div class="welcome">Welcome to the official ENOVA GOT TALENT 2026 Football Tournament registration portal. Please complete the form below accurately to register your participation.</div>
+<form id="registrationForm">
+<div class="form-row">
+<div class="form-group"><label for="fullName">Full Name <span class="required">*</span></label><input id="fullName" maxlength="120" required placeholder="Enter your full name"></div>
+<div class="form-group"><label for="employeeId">Employee ID <span class="required">*</span></label><input id="employeeId" maxlength="60" required placeholder="Enter your employee ID"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label for="position">On Field Position <span class="required">*</span></label><select id="position" required><option value="">Select a position</option><option>Goalkeeper</option><option>Centre Back</option><option>Left Back</option><option>Right Back</option><option>Defensive Midfielder</option><option>Central Midfielder</option><option>Attacking Midfielder</option><option>Left Winger</option><option>Right Winger</option><option>Striker</option><option>Forward</option><option>Flexible / Multiple Positions</option></select></div>
+<div class="form-group"><label for="jerseySize">Jersey Size <span class="required">*</span></label><select id="jerseySize" required><option value="">Select a size</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option></select></div>
+</div>
+<div class="checkbox"><input type="checkbox" id="confirm" required><label for="confirm">I confirm that the information provided above is accurate and I wish to participate in ENOVA GOT TALENT 2026.</label></div>
+<button id="submitBtn" class="btn full" type="submit">REGISTER FOR TOURNAMENT</button>
+</form>
+</section>
+<p class="footer-note">Official tournament registration portal</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const client = supabase.createClient("https://ilooqickrlyskpvjnnsk.supabase.co", "sb_publishable_pPG0cxYO3ZtS_OcjavBraQ_bxNOi24v");
+const form = document.getElementById('registrationForm');
+const successBox = document.getElementById('success');
+const errorBox = document.getElementById('error');
+const submitBtn = document.getElementById('submitBtn');
+function showError(m){errorBox.textContent=m;errorBox.classList.add('show');successBox.classList.remove('show');}
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  errorBox.classList.remove('show'); successBox.classList.remove('show');
+  const full_name=document.getElementById('fullName').value.trim().replace(/\s+/g,' ');
+  const employee_id=document.getElementById('employeeId').value.trim().toUpperCase();
+  const position=document.getElementById('position').value;
+  const jersey_size=document.getElementById('jerseySize').value;
+  if(!full_name||!employee_id||!position||!jersey_size||!document.getElementById('confirm').checked){showError('Please complete all required fields.');return;}
+  submitBtn.disabled=true; submitBtn.textContent='SUBMITTING...';
+  const { error } = await client.from('registrations').insert({full_name,employee_id,position,jersey_size,status:'Registered'});
+  if(error){
+    if(error.code==='23505') showError('This Employee ID has already been registered. Please contact the tournament administrator if you believe this is an error.');
+    else showError('Registration could not be completed. Please try again.');
+  } else {
+    form.reset(); successBox.classList.add('show'); successBox.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  submitBtn.disabled=false; submitBtn.textContent='REGISTER FOR TOURNAMENT';
+});
+</script>
+</body></html>
